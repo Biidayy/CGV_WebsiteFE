@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CGV Cinemas Vietnam | Trang chủ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-active="">
+  <div class="page-wrap">
+    <div id="site-header-host"></div>
+    <div id="quick-icons-host"></div>
+
+    <section class="hero">
+      <div class="hero-track" id="hero-track"></div>
+      <button class="hero-nav prev" type="button" aria-label="Trước">‹</button>
+      <button class="hero-nav next" type="button" aria-label="Sau">›</button>
+      <div class="hero-dots" id="hero-dots"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-title"><h2>Movie Selection</h2></div>
+      <div class="carousel-wrap" data-rail>
+        <button class="rail-btn prev" type="button">‹</button>
+        <div class="movie-rail" id="home-movies"></div>
+        <button class="rail-btn next" type="button">›</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title"><h2>Event</h2></div>
+      <div class="event-tab">📢 Thành Viên CGV | Tin Mới & Ưu Đãi</div>
+      <div class="carousel-wrap" data-rail>
+        <button class="rail-btn prev" type="button">‹</button>
+        <div class="event-rail" id="home-events"></div>
+        <button class="rail-btn next" type="button">›</button>
+      </div>
+    </section>
+
+    <div id="site-footer-host"></div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
