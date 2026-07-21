@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập - CGV</title>
+    <title>Đăng ký - CGV</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/dangnhap.css">
+    <link rel="stylesheet" href="css/dangky.css">
 </head>
 <body>
 
-<div class="login-container">
+<div class="register-container">
 
-    <div class="login-box">
+    <div class="register-box">
 
         <a href="index.html">
         <img src="https://www.cgv.vn/skin/frontend/cgv/default/images/cgvlogo.png"
              class="logo">
         </a>
 
-        <h2>ĐĂNG NHẬP</h2>
+        <h2>ĐĂNG KÝ</h2>
 
         <form>
 
             <input
+                type="text"
+                placeholder="Họ và tên"
+                required
+            >
+
+            <input
                 type="email"
                 placeholder="Email"
+                required
+            >
+
+            <input
+                type="text"
+                placeholder="Số điện thoại"
                 required
             >
 
@@ -35,17 +47,19 @@
                 required
             >
 
+            <input
+                type="password"
+                placeholder="Xác nhận mật khẩu"
+                required
+            >
+
             <button type="submit">
-                ĐĂNG NHẬP
+                ĐĂNG KÝ
             </button>
 
-            <p class="forgot">
-                Quên mật khẩu?
-            </p>
-
-            <p class="register">
-                Chưa có tài khoản?
-                <a href="dangky.html">Đăng ký</a>
+            <p class="login">
+                Đã có tài khoản?
+                <a href="dangnhap.html">Đăng nhập</a>
             </p>
 
         </form>

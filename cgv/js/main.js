@@ -20,7 +20,8 @@ function renderHeader(active) {
       <a href="#">TIN MỚI & ƯU ĐÃI</a>
       <a href="ve-cua-toi.html">VÉ CỦA TÔI${ticketCount ? ` (${ticketCount})` : ""}</a>
       <a href="ve-cua-toi.html#favorites">YÊU THÍCH${favCount ? ` (${favCount})` : ""}</a>
-      <a href="#">ĐĂNG NHẬP/ ĐĂNG KÝ</a>
+      <a href="hosocanhan.html">HỒ SƠ</a>
+      <a href="dangnhap.html">ĐĂNG NHẬP/ ĐĂNG KÝ</a>
       <div class="lang-switch"><span class="active">VN</span><span>EN</span></div>
     </div>
   </div>
@@ -320,7 +321,7 @@ function initCities() {
     list.innerHTML = `
       <div class="theater-result">
         <h3>Rạp CGV tại ${city}</h3>
-        <div class="theater-result-list">${theaters.map((t) => `<a href="#">${t}</a>`).join("")}</div>
+        <div class="theater-result-list">${theaters.map((t) => `<a href="chi-tiet-rap.html">${t}</a>`).join("")}</div>
       </div>`;
   };
 
