@@ -1,3 +1,433 @@
+<<<<<<< HEAD
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#e8e8e8;
+    color:#333;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+}
+
+ul{
+    list-style:none;
+}
+
+img{
+    max-width:100%;
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.container{
+    width:1200px;
+    margin:auto;
+}
+
+/* ==========================
+   TOP BANNER
+========================== */
+
+.top-banner{
+    width:100%;
+    background:#000;
+}
+
+.top-banner img{
+    width:100%;
+    height:80px;
+    object-fit:cover;
+    display:block;
+}
+
+/* ==========================
+   TOP HEADER
+========================== */
+
+.top-header{
+    background:#fff;
+    border-bottom:1px solid #ddd;
+}
+
+.top-header .container{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    height:45px;
+    gap:25px;
+}
+
+.top-header a{
+    color:#555;
+    font-size:13px;
+    transition:.3s;
+}
+
+.top-header a:hover{
+    color:#d81f44;
+}
+
+/* ==========================
+   MAIN HEADER
+========================== */
+
+header{
+    background:#fff;
+}
+
+.header-top{
+
+    width:1200px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 0;
+
+}
+
+.logo{
+
+    width:120px;
+
+}
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.header-right a{
+
+    color:#444;
+
+    font-size:14px;
+
+}
+
+.header-right a:hover{
+
+    color:#d81f44;
+
+}
+
+/* ==========================
+   MENU
+========================== */
+
+nav{
+
+    background:#c70f37;
+
+}
+
+nav ul{
+
+    width:1200px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+nav li{
+
+    padding:15px 28px;
+
+}
+
+nav a{
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    letter-spacing:.5px;
+
+}
+
+nav li:hover{
+
+    background:#a90d2f;
+
+}
+
+/* ==========================
+   CONTENT
+========================== */
+
+main{
+
+    width:1200px;
+
+    margin:35px auto;
+
+    min-height:650px;
+
+}
+/* ==========================
+   LOGIN - REGISTER
+========================== */
+
+.login-container,
+.register-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px 0 60px;
+}
+
+.login-box,
+.register-box{
+    width:430px;
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+    padding:35px;
+    text-align:center;
+}
+
+.login-logo{
+    width:85px;
+    margin-bottom:15px;
+}
+
+.login-box h2,
+.register-box h2{
+    font-size:22px;
+    color:#c8102e;
+    margin-bottom:25px;
+}
+
+.login-box input,
+.register-box input,
+.register-box select{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #d8d8d8;
+    border-radius:5px;
+    font-size:14px;
+}
+
+.login-box input:focus,
+.register-box input:focus,
+.register-box select:focus{
+    outline:none;
+    border-color:#c8102e;
+}
+
+.remember{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:20px;
+    font-size:13px;
+    color:#666;
+}
+
+.remember input{
+    width:16px;
+    height:16px;
+}
+
+.login-box button,
+.register-box button{
+
+    width:100%;
+
+    padding:13px;
+
+    background:#c8102e;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:5px;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.login-box button:hover,
+.register-box button:hover{
+
+    background:#a60c26;
+
+}
+
+.forgot,
+.register{
+
+    margin-top:15px;
+
+    font-size:13px;
+
+    color:#666;
+
+}
+
+.register a{
+
+    color:#c8102e;
+
+    font-weight:bold;
+
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+footer{
+
+    background:#f8f4ea;
+
+    border-top:2px solid #ddd;
+
+    margin-top:50px;
+
+}
+
+.footer-content{
+
+    width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:35px;
+
+    padding:40px 0;
+
+}
+
+.footer-content h3{
+
+    color:#333;
+
+    margin-bottom:15px;
+
+    font-size:16px;
+
+}
+
+.footer-content p{
+
+    margin:8px 0;
+
+    color:#666;
+
+    font-size:13px;
+
+    cursor:pointer;
+
+}
+
+.footer-content p:hover{
+
+    color:#c8102e;
+
+}
+
+.copyright{
+
+    text-align:center;
+
+    padding:18px;
+
+    font-size:13px;
+
+    color:#777;
+
+    border-top:1px solid #ddd;
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:1200px){
+
+    .container,
+    .header-top,
+    nav ul,
+    main,
+    .footer-content{
+
+        width:95%;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    nav ul{
+
+        flex-wrap:wrap;
+
+    }
+
+    nav li{
+
+        padding:12px 15px;
+
+    }
+
+    .login-box,
+    .register-box{
+
+        width:95%;
+
+        padding:25px;
+
+    }
+
+    .footer-content{
+
+        grid-template-columns:1fr;
+
+    }
+
+=======
 :root {
   --cgv-red: #e71a0f;
   --cgv-red-dark: #b4140c;
@@ -1423,4 +1853,5 @@ button { font-family: inherit; cursor: pointer; }
   .detail-info h1 { font-size: 20px; }
   .seat { width: 24px; height: 24px; }
   .ticket-card { grid-template-columns: 80px 1fr; }
+>>>>>>> 00e5f75a7ebe46889dc9a943f26ef8e3ef9c04e0
 }

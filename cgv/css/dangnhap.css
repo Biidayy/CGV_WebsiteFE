@@ -1,89 +1,94 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body{
-    background:#f5f5f5;
-}
-
 .login-container{
-    width:100%;
-    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
+    padding:40px 0 60px;
 }
 
 .login-box{
-    width:380px;
+    width:420px;
     background:#fff;
-    padding:40px;
-    border-radius:10px;
-    box-shadow:0 5px 20px rgba(0,0,0,.15);
+    border-radius:8px;
+    padding:30px 40px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
     text-align:center;
 }
 
-.logo{
-    width:90px;
-    margin-bottom:20px;
+.login-logo{
+    width:80px;
+    margin-bottom:10px;
 }
 
 .login-box h2{
-    color:#c4002f;
-    margin-bottom:25px;
-    font-size:28px;
+    font-size:20px;
+    font-weight:500;
+    color:#333;
+    margin-bottom:20px;
 }
 
-.login-box input{
+.login-box input[type="email"],
+.login-box input[type="password"]{
     width:100%;
     padding:12px;
     margin-bottom:15px;
-    border:1px solid #ccc;
-    border-radius:5px;
-    font-size:15px;
+    border:1px solid #ddd;
+    border-radius:4px;
+    font-size:14px;
 }
 
 .login-box input:focus{
     outline:none;
-    border-color:#c4002f;
+    border-color:#d41c3c;
+}
+
+.remember{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:15px;
+    font-size:13px;
+    color:#666;
+}
+
+.remember input{
+    width:16px;
+    height:16px;
 }
 
 .login-box button{
     width:100%;
-    padding:12px;
-    background:#c4002f;
-    color:white;
+    background:#cf123a;
+    color:#fff;
     border:none;
-    border-radius:5px;
+    border-radius:4px;
+    padding:12px;
+    font-size:15px;
     cursor:pointer;
-    font-size:16px;
     transition:.3s;
 }
 
 .login-box button:hover{
-    background:#a60027;
+    background:#b20d31;
 }
 
 .forgot{
     margin-top:15px;
+    font-size:13px;
     color:#666;
     cursor:pointer;
 }
 
+.forgot:hover{
+    color:#cf123a;
+}
+
 .register{
-    margin-top:20px;
-    font-size:14px;
+    margin-top:8px;
+    font-size:13px;
+    color:#666;
+    cursor:pointer;
 }
 
-.register a{
-    color:#c4002f;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.register a:hover{
-    text-decoration:underline;
+.register:hover{
+    color:#cf123a;
 }
