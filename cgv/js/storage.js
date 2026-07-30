@@ -2,7 +2,10 @@
 const STORAGE_KEYS = {
   favorites: "cgv_fe_favorites",
   tickets: "cgv_fe_tickets",
+  recent: "cgv_fe_recent",
 };
+
+const RECENT_MAX = 6;
 
 function readJson(key, fallback) {
   try {
@@ -49,6 +52,17 @@ function removeTicket(ticketId) {
   const list = getTickets().filter((t) => t.id !== ticketId);
   writeJson(STORAGE_KEYS.tickets, list);
   return list;
+}
+
+function getRecentMovies() {
+  return readJson(STORAGE_KEYS.recent, []);
+}
+
+function trackRecentMovie(id) {
+  if (!id) return;
+  const list = getRecentMovies().filter((item) => item !== id);
+  list.unshift(id);
+  writeJson(STORAGE_KEYS.recent, list.slice(0, RECENT_MAX));
 }
 
 function showToast(message) {

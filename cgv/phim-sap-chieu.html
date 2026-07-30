@@ -62,8 +62,19 @@
             <option value="T18">T18</option>
           </select>
         </label>
+        <label>
+          <span>Sắp xếp</span>
+          <select id="filter-sort">
+            <option value="default">Mặc định</option>
+            <option value="name-asc">Tên A → Z</option>
+            <option value="name-desc">Tên Z → A</option>
+            <option value="release-desc">Khởi chiếu mới nhất</option>
+            <option value="release-asc">Khởi chiếu sớm nhất</option>
+          </select>
+        </label>
         <button type="button" class="btn-secondary" id="filter-reset">Xóa lọc</button>
       </div>
+      <p class="filter-meta" id="filter-meta" hidden></p>
     </div>
 
     <div class="movie-grid" id="movie-grid"></div>

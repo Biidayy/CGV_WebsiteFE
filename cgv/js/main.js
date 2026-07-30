@@ -27,6 +27,10 @@ function renderHeader(active) {
   <header class="site-header">
     <div class="header-row">
       <a class="logo" href="index.html"><img src="${CGV_ASSETS.logo}" alt="CGV Cinemas"></a>
+      <form class="header-search" action="phim-dang-chieu.html" method="get" role="search">
+        <input type="search" name="q" placeholder="Tìm phim, thể loại..." aria-label="Tìm phim">
+        <button type="submit" aria-label="Tìm kiếm">⌕</button>
+      </form>
       <button class="menu-toggle" type="button" aria-label="Menu">☰</button>
       <ul class="main-nav">
         <li class="${active === "phim" ? "active" : ""}">
@@ -246,6 +250,23 @@ function renderEvents() {
     </a>`).join("");
 }
 
+function parseReleaseDate(release) {
+  const [d, m, y] = String(release || "").split("-").map(Number);
+  if (!d || !m || !y) return 0;
+  return new Date(y, m - 1, d).getTime();
+}
+
+function sortMovies(list) {
+  const mode = document.getElementById("filter-sort")?.value || "default";
+  const sorted = [...list];
+  if (mode === "name-asc") sorted.sort((a, b) => a.title.localeCompare(b.title, "vi"));
+  else if (mode === "name-desc") sorted.sort((a, b) => b.title.localeCompare(a.title, "vi"));
+  else if (mode === "release-desc") sorted.sort((a, b) => parseReleaseDate(b.release) - parseReleaseDate(a.release));
+  else if (mode === "release-asc") sorted.sort((a, b) => parseReleaseDate(a.release) - parseReleaseDate(b.release));
+  else if (mode === "default") sorted.sort((a, b) => (a.rank || 999) - (b.rank || 999));
+  return sorted;
+}
+
 function getFilteredMovies() {
   const coming = document.body.dataset.movies === "coming";
   let list = coming ? [...MOVIES_COMING] : [...MOVIES_NOW];
@@ -258,7 +279,7 @@ function getFilteredMovies() {
   if (genre !== "all") list = list.filter((m) => m.genre.toLowerCase().includes(genre.toLowerCase()));
   if (format !== "all") list = list.filter((m) => (m.formats || []).includes(format));
   if (rating !== "all") list = list.filter((m) => m.rating === rating);
-  return list;
+  return sortMovies(list);
 }
 
 function renderMovieGrid() {
@@ -270,23 +291,40 @@ function renderMovieGrid() {
   if (!list.length) {
     el.innerHTML = "";
     if (empty) empty.hidden = false;
+    const meta = document.getElementById("filter-meta");
+    if (meta) {
+      meta.hidden = false;
+      meta.textContent = "Hiển thị 0 phim";
+    }
     return;
   }
   if (empty) empty.hidden = true;
   el.innerHTML = list.map((m) => filmListCard(m)).join("");
   bindFavoriteButtons(el);
+  const meta = document.getElementById("filter-meta");
+  if (meta) {
+    meta.hidden = false;
+    meta.textContent = `Hiển thị ${list.length} phim`;
+  }
 }
 
 function initMovieFilters() {
   const toolbar = document.getElementById("movie-toolbar");
   if (!toolbar) return;
-  ["filter-search", "filter-genre", "filter-format", "filter-rating"].forEach((id) => {
+
+  const query = new URLSearchParams(location.search).get("q");
+  if (query) {
+    const searchInput = document.getElementById("filter-search");
+    if (searchInput) searchInput.value = query;
+  }
+
+  ["filter-search", "filter-genre", "filter-format", "filter-rating", "filter-sort"].forEach((id) => {
     document.getElementById(id)?.addEventListener("input", renderMovieGrid);
     document.getElementById(id)?.addEventListener("change", renderMovieGrid);
   });
   document.getElementById("filter-reset")?.addEventListener("click", () => {
     toolbar.querySelectorAll("input, select").forEach((el) => {
-      if (el.tagName === "SELECT") el.value = "all";
+      if (el.tagName === "SELECT") el.value = el.id === "filter-sort" ? "default" : "all";
       else el.value = "";
     });
     renderMovieGrid();
@@ -310,24 +348,33 @@ function bindFavoriteButtons(root = document) {
 function initCities() {
   const box = document.getElementById("city-columns");
   const list = document.getElementById("theater-list");
+  const searchInput = document.getElementById("theater-search");
   if (!box || !list) return;
 
   box.innerHTML = CITIES.map((c) => `<button type="button" data-city="${c}">${c}</button>`).join("");
 
-  const show = (city) => {
+  let activeCity = "Hồ Chí Minh";
+
+  const show = (city, keyword = "") => {
+    activeCity = city;
+    const q = keyword.trim().toLowerCase();
     box.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b.dataset.city === city));
-    const theaters = THEATERS[city] || [`CGV ${city} (đang cập nhật địa điểm)`];
+    let theaters = THEATERS[city] || [`CGV ${city} (đang cập nhật địa điểm)`];
+    if (q) theaters = theaters.filter((t) => t.toLowerCase().includes(q));
     list.innerHTML = `
       <div class="theater-result">
-        <h3>Rạp CGV tại ${city}</h3>
-        <div class="theater-result-list">${theaters.map((t) => `<a href="chi-tiet-rap.html">${t}</a>`).join("")}</div>
+        <h3>Rạp CGV tại ${city}${q ? ` · "${keyword.trim()}"` : ""}</h3>
+        <div class="theater-result-list">${theaters.length
+          ? theaters.map((t) => `<a href="chi-tiet-rap.html">${t}</a>`).join("")
+          : `<p class="empty-note">Không tìm thấy rạp phù hợp.</p>`}</div>
       </div>`;
   };
 
   box.querySelectorAll("button").forEach((btn) => {
-    btn.addEventListener("click", () => show(btn.dataset.city));
+    btn.addEventListener("click", () => show(btn.dataset.city, searchInput?.value || ""));
   });
-  show("Hồ Chí Minh");
+  searchInput?.addEventListener("input", () => show(activeCity, searchInput.value));
+  show(activeCity);
 }
 
 function renderSpecialPage() {
@@ -347,6 +394,7 @@ function initMovieDetail() {
   if (!host) return;
   const id = new URLSearchParams(location.search).get("id");
   const movie = findMovieById(id) || MOVIES_NOW[0];
+  trackRecentMovie(movie.id);
   const liked = isFavorite(movie.id);
   const canBook = MOVIES_NOW.some((m) => m.id === movie.id);
 
@@ -370,6 +418,7 @@ function initMovieDetail() {
           <button type="button" class="btn-secondary btn-fav-text ${liked ? "active" : ""}" data-fav="${movie.id}">
             ${liked ? "♥ Đã yêu thích" : "♡ Yêu thích"}
           </button>
+          <button type="button" class="btn-secondary" id="share-movie">Chia sẻ link</button>
         </div>
       </div>
     </div>
@@ -388,6 +437,21 @@ function initMovieDetail() {
     favBtn.textContent = on ? "♥ Đã yêu thích" : "♡ Yêu thích";
     showToast(on ? "Đã thêm vào Yêu thích" : "Đã bỏ khỏi Yêu thích");
     mountShell(document.body.dataset.active || "");
+  });
+
+  document.getElementById("share-movie")?.addEventListener("click", async () => {
+    const url = `${location.origin}${location.pathname}?id=${movie.id}`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: movie.title, url });
+        showToast("Đã mở chia sẻ");
+        return;
+      }
+      await navigator.clipboard.writeText(url);
+      showToast("Đã copy link phim");
+    } catch {
+      showToast("Không thể chia sẻ link");
+    }
   });
 }
 
@@ -530,6 +594,49 @@ function initBooking() {
   render();
 }
 
+function printTicket(ticket) {
+  const win = window.open("", "_blank", "width=520,height=720");
+  if (!win) {
+    showToast("Trình duyệt chặn cửa sổ in vé");
+    return;
+  }
+  win.document.write(`
+    <!DOCTYPE html>
+    <html lang="vi"><head><meta charset="UTF-8"><title>Vé ${ticket.movieTitle}</title>
+    <style>
+      body { font-family: Arial, sans-serif; padding: 24px; color: #222; }
+      h1 { color: #e71a0f; font-size: 20px; margin-bottom: 8px; }
+      .box { border: 2px dashed #e71a0f; padding: 16px; margin-top: 16px; }
+      p { margin: 6px 0; }
+      .price { font-size: 18px; font-weight: bold; color: #e71a0f; margin-top: 12px; }
+    </style></head><body>
+      <h1>CGV · VÉ ĐIỆN TỬ (MOCK)</h1>
+      <div class="box">
+        <p><strong>Phim:</strong> ${ticket.movieTitle}</p>
+        <p><strong>Rạp:</strong> ${ticket.theater}</p>
+        <p><strong>Suất:</strong> ${ticket.date} · ${ticket.time}</p>
+        <p><strong>Ghế:</strong> ${ticket.seats.join(", ")}</p>
+        <p class="price">${formatVnd(ticket.total)}</p>
+      </div>
+      <p style="margin-top:20px;font-size:12px;color:#666;">Mã vé: ${ticket.id}</p>
+    </body></html>`);
+  win.document.close();
+  win.focus();
+  win.print();
+}
+
+function renderRecentMovies(hostId, sectionId) {
+  const host = document.getElementById(hostId);
+  const section = sectionId ? document.getElementById(sectionId) : null;
+  if (!host) return;
+  const movies = getRecentMovies().map(findMovieById).filter(Boolean);
+  if (section) section.hidden = !movies.length;
+  host.innerHTML = movies.length
+    ? `<div class="movie-grid compact-grid">${movies.map(filmListCard).join("")}</div>`
+    : `<p class="empty-note">Chưa xem phim nào gần đây. Mở chi tiết phim để lưu lịch sử.</p>`;
+  bindFavoriteButtons(host);
+}
+
 function initMyPage() {
   const ticketsHost = document.getElementById("my-tickets");
   const favHost = document.getElementById("my-favorites");
@@ -546,7 +653,10 @@ function initMyPage() {
           <p>${t.date} · ${t.time}</p>
           <p>Ghế: <strong>${t.seats.join(", ")}</strong></p>
           <p class="price">${formatVnd(t.total)}</p>
-          <button type="button" class="btn-secondary" data-del-ticket="${t.id}">Xóa vé</button>
+          <div class="ticket-actions">
+            <button type="button" class="btn-secondary" data-print-ticket="${t.id}">In vé</button>
+            <button type="button" class="btn-secondary" data-del-ticket="${t.id}">Xóa vé</button>
+          </div>
         </div>
       </article>`).join("") : `<p class="empty-note">Chưa có vé nào. Hãy <a href="phim-dang-chieu.html">đặt vé</a>.</p>`;
 
@@ -558,6 +668,13 @@ function initMyPage() {
         mountShell(document.body.dataset.active || "");
       });
     });
+
+    ticketsHost.querySelectorAll("[data-print-ticket]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const ticket = getTickets().find((item) => item.id === btn.dataset.printTicket);
+        if (ticket) printTicket(ticket);
+      });
+    });
   }
 
   if (favHost) {
@@ -567,6 +684,8 @@ function initMyPage() {
       : `<p class="empty-note">Chưa có phim yêu thích. Bấm ♥ trên poster để lưu.</p>`;
     bindFavoriteButtons(favHost);
   }
+
+  renderRecentMovies("my-recent");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -574,6 +693,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initBackToTop();
   initHero();
   renderHomeMovies();
+  renderRecentMovies("home-recent", "recent-section");
   renderEvents();
   initMovieFilters();
   renderMovieGrid();
