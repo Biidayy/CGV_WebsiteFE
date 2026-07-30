@@ -17,7 +17,7 @@ function renderHeader(active) {
   </div>
   <div class="utility-bar">
     <div class="utility-bar-inner">
-      <a href="#">TIN MỚI & ƯU ĐÃI</a>
+      <a href="tin-moi-uu-dai.html">TIN MỚI & ƯU ĐÃI</a>
       <a href="ve-cua-toi.html">VÉ CỦA TÔI${ticketCount ? ` (${ticketCount})` : ""}</a>
       <a href="ve-cua-toi.html#favorites">YÊU THÍCH${favCount ? ` (${favCount})` : ""}</a>
       <a href="#">ĐĂNG NHẬP/ ĐĂNG KÝ</a>
@@ -244,10 +244,126 @@ function renderHomeMovies() {
 function renderEvents() {
   const el = document.getElementById("home-events");
   if (!el) return;
-  el.innerHTML = EVENTS.map((e) => `
-    <a class="event-card" href="#" title="${e.title}">
-      <img src="${e.image}" alt="${e.title}" loading="lazy">
+  el.innerHTML = NEWS_OFFERS.slice(0, 6).map((o) => `
+    <a class="event-card" href="chi-tiet-uu-dai.html?id=${o.id}" title="${o.title}">
+      <img src="${o.image}" alt="${o.title}" loading="lazy"
+           onerror="this.src='https://placehold.co/496x247/f5f5f5/e71a0f?text=CGV+Offer'">
     </a>`).join("");
+}
+
+function offerCard(offer) {
+  const tag = offer.tag ? `<span class="offer-tag">${offer.tag}</span>` : "";
+  return `
+  <article class="offer-card">
+    <a class="offer-thumb" href="chi-tiet-uu-dai.html?id=${offer.id}">
+      ${tag}
+      <img src="${offer.image}" alt="${offer.title}" loading="lazy"
+           onerror="this.src='https://placehold.co/496x247/f5f5f5/e71a0f?text=CGV'">
+    </a>
+    <div class="offer-body">
+      <span class="offer-category">${offer.category}</span>
+      <h2><a href="chi-tiet-uu-dai.html?id=${offer.id}">${offer.title}</a></h2>
+      <p class="offer-date">${formatOfferDate(offer.dateFrom, offer.dateTo)}</p>
+      <p class="offer-excerpt">${offer.excerpt}</p>
+      <a class="offer-read" href="chi-tiet-uu-dai.html?id=${offer.id}">Xem chi tiết →</a>
+    </div>
+  </article>`;
+}
+
+function getFilteredOffers() {
+  let list = [...NEWS_OFFERS];
+  const q = (document.getElementById("offer-search")?.value || "").trim().toLowerCase();
+  const category = document.getElementById("offer-category")?.value || "all";
+  const sort = document.getElementById("offer-sort")?.value || "newest";
+
+  if (q) {
+    list = list.filter((o) =>
+      o.title.toLowerCase().includes(q) ||
+      o.excerpt.toLowerCase().includes(q) ||
+      o.category.toLowerCase().includes(q)
+    );
+  }
+  if (category !== "all") list = list.filter((o) => o.category === category);
+
+  if (sort === "newest") list.sort((a, b) => b.dateFrom.localeCompare(a.dateFrom));
+  else if (sort === "oldest") list.sort((a, b) => a.dateFrom.localeCompare(b.dateFrom));
+  else if (sort === "title") list.sort((a, b) => a.title.localeCompare(b.title, "vi"));
+
+  return list;
+}
+
+function renderOfferGrid() {
+  const el = document.getElementById("offer-grid");
+  if (!el) return;
+  const list = getFilteredOffers();
+  const empty = document.getElementById("offer-empty");
+  const meta = document.getElementById("offer-meta");
+
+  if (!list.length) {
+    el.innerHTML = "";
+    if (empty) empty.hidden = false;
+    if (meta) {
+      meta.hidden = false;
+      meta.textContent = "Hiển thị 0 ưu đãi";
+    }
+    return;
+  }
+
+  if (empty) empty.hidden = true;
+  if (meta) {
+    meta.hidden = false;
+    meta.textContent = `Hiển thị ${list.length} ưu đãi`;
+  }
+  el.innerHTML = list.map(offerCard).join("");
+}
+
+function initNewsOffers() {
+  const toolbar = document.getElementById("offer-toolbar");
+  if (!toolbar) return;
+
+  ["offer-search", "offer-category", "offer-sort"].forEach((id) => {
+    document.getElementById(id)?.addEventListener("input", renderOfferGrid);
+    document.getElementById(id)?.addEventListener("change", renderOfferGrid);
+  });
+  document.getElementById("offer-reset")?.addEventListener("click", () => {
+    toolbar.querySelectorAll("input, select").forEach((el) => {
+      if (el.tagName === "SELECT") el.value = el.id === "offer-sort" ? "newest" : "all";
+      else el.value = "";
+    });
+    renderOfferGrid();
+  });
+  renderOfferGrid();
+}
+
+function initOfferDetail() {
+  const host = document.getElementById("offer-detail");
+  if (!host) return;
+
+  const id = new URLSearchParams(location.search).get("id");
+  const offer = findOfferById(id) || NEWS_OFFERS[0];
+  const paragraphs = offer.body.split("\n\n").map((p) => `<p>${p.replace(/\n/g, "<br>")}</p>`).join("");
+
+  host.innerHTML = `
+    <article class="offer-detail">
+      <div class="offer-detail-banner">
+        <img src="${offer.image}" alt="${offer.title}"
+             onerror="this.src='https://placehold.co/980x400/f5f5f5/e71a0f?text=CGV+Offer'">
+      </div>
+      <div class="offer-detail-content">
+        <div class="offer-detail-meta">
+          ${offer.tag ? `<span class="offer-tag">${offer.tag}</span>` : ""}
+          <span class="offer-category">${offer.category}</span>
+          <span class="offer-date">${formatOfferDate(offer.dateFrom, offer.dateTo)}</span>
+        </div>
+        <h1>${offer.title}</h1>
+        <p class="offer-lead">${offer.excerpt}</p>
+        <div class="offer-detail-body">${paragraphs}</div>
+        <div class="offer-detail-actions">
+          <a class="btn-primary" href="phim-dang-chieu.html">Mua vé ngay</a>
+          <a class="btn-secondary" href="tin-moi-uu-dai.html">← Quay lại danh sách</a>
+        </div>
+      </div>
+    </article>`;
 }
 
 function parseReleaseDate(release) {
@@ -703,4 +819,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initMovieDetail();
   initBooking();
   initMyPage();
+  initNewsOffers();
+  initOfferDetail();
 });

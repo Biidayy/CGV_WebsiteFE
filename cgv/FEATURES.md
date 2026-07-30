@@ -7,6 +7,7 @@ Phân biệt phần bám UI CGV/Figma và phần tự thêm cho đồ án môn F
 | Trang | File | Mô tả |
 |---|---|---|
 | Trang chủ | `index.html` | Banner slider, movie rail, event rail |
+| Tin mới & ưu đãi | `tin-moi-uu-dai.html`, `chi-tiet-uu-dai.html` | Danh sách + chi tiết khuyến mãi |
 | Phim đang chiếu | `phim-dang-chieu.html` | Danh sách phim + bộ lọc |
 | Phim sắp chiếu | `phim-sap-chieu.html` | Danh sách phim sắp khởi chiếu |
 | Tất cả các rạp | `tat-ca-cac-rap.html` | Chọn tỉnh/thành, xem rạp |
@@ -48,6 +49,9 @@ Phân biệt phần bám UI CGV/Figma và phần tự thêm cho đồ án môn F
 | 15 | **Carousel phim/event** | Cuộn ngang bằng nút ‹ › | `initRails()`, `index.html` |
 | 16 | **Badge số lượng header** | Hiện số vé / yêu thích trên utility bar | `renderHeader()`, `storage.js` |
 | 17 | **Responsive** | Layout co giãn tablet/mobile | `style.css` `@media` |
+| 18 | **Tin mới & ưu đãi** | Trang listing giống cgv.vn/newsoffer | `tin-moi-uu-dai.html` |
+| 19 | **Lọc/sắp xếp ưu đãi** | Tìm, lọc danh mục, sắp xếp ngày | `main.js` |
+| 20 | **Chi tiết ưu đãi** | Trang nội dung chương trình KM | `chi-tiet-uu-dai.html` |
 
 ## D. Lưu trữ phía client
 

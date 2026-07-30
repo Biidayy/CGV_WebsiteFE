@@ -51,6 +51,141 @@ const EVENTS = [
   { image: "https://iguov8nhvyobj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/m/e/member79.jpg", title: "Member 79K" },
 ];
 
+const NEWS_OFFERS = [
+  {
+    id: "superdeal-tet26",
+    title: "10 DAYS OF AMAZING DEAL - GIẢM 50% TỐI ĐA 100.000Đ",
+    category: "Khuyến mãi",
+    dateFrom: "2026-02-03",
+    dateTo: "2026-02-12",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/2026/New_Offers_496x247.png",
+    excerpt: "Nhập mã TET26 giảm 50% giá vé (tối đa 100.000đ) cho thành viên CGV.",
+    body: "Ưu đãi dành cho thành viên CGV khi mua vé qua App, Web hoặc tại quầy.\n\n• Nhập mã TET26 giảm 50% giá vé, tối đa 100.000đ/ giao dịch.\n• Thời gian: 03/02 – 12/02/2026.\n• Áp dụng tất cả rạp, định dạng, phòng chiếu.\n• Mỗi tài khoản sử dụng tối đa 01 coupon.\n• Không áp dụng đồng thời chương trình khuyến mãi khác.",
+    tag: "HOT",
+  },
+  {
+    id: "member-79k",
+    title: "Thành viên CGV - Ưu đãi 79.000đ",
+    category: "Thành viên",
+    dateFrom: "2026-01-01",
+    dateTo: "2026-12-31",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/m/e/member79.jpg",
+    excerpt: "Đăng ký thành viên CGV, tích điểm và nhận ưu đãi vé xem phim chỉ từ 79.000đ.",
+    body: "Chương trình dành cho thành viên mới và thành viên hiện hữu.\n\n• Ưu đãi vé 2D từ 79.000đ các ngày trong tuần.\n• Tích lũy CGV Point khi mua vé và combo.\n• Nhận quà sinh nhật miễn phí trong tháng sinh nhật.",
+    tag: "MEMBER",
+  },
+  {
+    id: "birthday-gift",
+    title: "Quà Sinh Nhật MIỄN PHÍ",
+    category: "Thành viên",
+    dateFrom: "2026-02-02",
+    dateTo: "2026-02-12",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/2023/214x245.jpg",
+    excerpt: "Thành viên CGV nhận combo sinh nhật miễn phí trong tháng sinh nhật.",
+    body: "Điều kiện áp dụng cho thành viên CGV đã xác thực thông tin.\n\n• 01 combo sinh nhật/ thành viên/ năm.\n• Đăng ký nhận quà trên App CGV trước khi tới rạp.\n• Áp dụng khi mua tối thiểu 02 vé xem phim.",
+    tag: null,
+  },
+  {
+    id: "wednesday-fun",
+    title: "THỨ 4 VUI VẺ",
+    category: "Khuyến mãi",
+    dateFrom: "2025-09-24",
+    dateTo: "2026-09-24",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/2023/thue-rap.png",
+    excerpt: "Mỗi thứ Tư - giá vé ưu đãi cho thành viên CGV.",
+    body: "Chương trình Thứ 4 Vui Vẻ áp dụng hàng tuần.\n\n• Giảm giá vé cho thành viên CGV vào thứ Tư.\n• Không áp dụng ngày lễ, Tết theo quy định CGV.\n• Chi tiết giá vé theo từng rạp.",
+    tag: null,
+  },
+  {
+    id: "u22-promo",
+    title: "U22 - Ưu đãi học sinh sinh viên",
+    category: "Khuyến mãi",
+    dateFrom: "2025-07-25",
+    dateTo: "2026-03-15",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/2023/214x245.jpg",
+    excerpt: "Chương trình U22 dành cho khách hàng dưới 22 tuổi.",
+    body: "Xuất trình thẻ học sinh/ sinh viên còn hiệu lực tại quầy CGV.\n\n• Giá vé ưu đãi cho suất chiếu 2D.\n• Không áp dụng suất đặc biệt IMAX, 4DX, Gold Class.\n• Tối đa 02 vé/ lượt/ thẻ.",
+    tag: null,
+  },
+  {
+    id: "gift-card-2025",
+    title: "Thẻ Quà Tặng CGV 2025",
+    category: "Dịch vụ",
+    dateFrom: "2025-10-06",
+    dateTo: "2026-12-31",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/2026/New_Offers_496x247.png",
+    excerpt: "Tặng thẻ quà CGV cho bạn bè và người thân dịp lễ Tết.",
+    body: "Thẻ quà CGV sử dụng mua vé, combo bắp nước tại hệ thống rạp.\n\n• Mệnh giá từ 100.000đ đến 1.000.000đ.\n• Mua online hoặc tại quầy CGV.\n• Thời hạn sử dụng 12 tháng kể từ ngày kích hoạt.",
+    tag: null,
+  },
+  {
+    id: "culture-day",
+    title: "Culture Day Tháng 1",
+    category: "Sự kiện",
+    dateFrom: "2026-01-15",
+    dateTo: "2026-01-31",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/o/d/ody_rollingbanner_980x448.jpg",
+    excerpt: "Cultureplex - trải nghiệm văn hóa điện ảnh tại CGV.",
+    body: "Chuỗi sự kiện Culture Day với workshop, chiếu phim đặc biệt.\n\n• Hoạt động tại các rạp CGV lớn.\n\n• Đăng ký tham gia trên fanpage CGV Cinemas Vietnam.",
+    tag: "EVENT",
+  },
+  {
+    id: "hot-foods",
+    title: "HOT FOODS MENU",
+    category: "Dịch vụ",
+    dateFrom: "2024-07-29",
+    dateTo: "2026-12-31",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/2023/thue-rap.png",
+    excerpt: "Thực đơn đồ ăn nóng mới tại quầy CGV.",
+    body: "Cập nhật menu Hot Foods với nhiều món ăn nóng hấp dẫn.\n\n• Gà popcorn, xúc xích nướng, khoai tây chiên.\n• Combo tiết kiệm khi mua kèm vé xem phim.",
+    tag: null,
+  },
+  {
+    id: "kiosk-ticket",
+    title: "MÁY BÁN VÉ TỰ ĐỘNG",
+    category: "Dịch vụ",
+    dateFrom: "2024-01-01",
+    dateTo: "2026-12-31",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/2023/214x245.jpg",
+    excerpt: "Mua vé nhanh tại máy bán vé tự động CGV.",
+    body: "Tiện ích mua vé không cần xếp hàng tại quầy.\n\n• Hỗ trợ thẻ thành viên và thanh toán QR.\n• In vé ngay tại máy sau khi thanh toán.",
+    tag: null,
+  },
+  {
+    id: "refund-policy",
+    title: "HOÀN VÉ CHỦ ĐỘNG",
+    category: "Dịch vụ",
+    dateFrom: "2024-01-01",
+    dateTo: "2026-12-31",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/2026/New_Offers_496x247.png",
+    excerpt: "Hướng dẫn hoàn vé online trên App/ Web CGV.",
+    body: "Khách hàng có thể yêu cầu hoàn vé theo chính sách CGV.\n\n• Hoàn vé trước suất chiếu tối thiểu 60 phút.\n• Thực hiện trên App CGV Cinemas Vietnam.\n• Phí hoàn vé theo quy định từng chương trình.",
+    tag: null,
+  },
+  {
+    id: "rent-cinema",
+    title: "Thuê Rạp & Vé Nhóm",
+    category: "Sự kiện",
+    dateFrom: "2025-01-01",
+    dateTo: "2026-12-31",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/wysiwyg/2023/thue-rap.png",
+    excerpt: "Thuê phòng chiếu riêng cho công ty, trường học, sinh nhật.",
+    body: "Dịch vụ thuê rạp CGV cho sự kiện và tập thể.\n\n• Từ 20 khách trở lên.\n\n• Liên hệ hotline 1900 6017 hoặc email hoidap@cgv.vn.",
+    tag: null,
+  },
+  {
+    id: "tet-schedule",
+    title: "Lịch hoạt động Tết 2026",
+    category: "Sự kiện",
+    dateFrom: "2026-02-05",
+    dateTo: "2026-02-17",
+    image: "https://iguov8nhvyobj.vcdn.cloud/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/9/8/980x448_54_.jpg",
+    excerpt: "Thông báo giờ mở cửa các rạp CGV trong dịp Tết Nguyên Đán.",
+    body: "Cập nhật lịch hoạt động Tết 2026 theo từng rạp.\n\n• Một số rạp mở cửa sớm/ muộn hơn ngày thường.\n• Xem chi tiết tại mục Rạp CGV hoặc fanpage CGV.",
+    tag: "NEW",
+  },
+];
+
 const CITIES = [
   "Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Cần Thơ", "Đồng Nai", "Hải Phòng",
   "Quảng Ninh", "Bà Rịa-Vũng Tàu", "Bình Định", "Bình Dương", "Đắk Lắk", "Trà Vinh",
@@ -101,9 +236,21 @@ const QUICK_ICONS = [
   { href: "rap-dac-biet.html", emoji: "⭐", en: "CGV SPECIAL", vi: "Rạp đặc biệt" },
   { href: "ve-cua-toi.html", emoji: "🎟️", en: "MY TICKETS", vi: "Vé của tôi" },
   { href: "#", emoji: "☎️", en: "CONTACT", vi: "Liên hệ CGV" },
-  { href: "#", emoji: "📰", en: "NEWS & OFFERS", vi: "Tin mới & Ưu đãi" },
+  { href: "tin-moi-uu-dai.html", emoji: "📰", en: "NEWS & OFFERS", vi: "Tin mới & Ưu đãi" },
   { href: "ve-cua-toi.html#favorites", emoji: "❤️", en: "FAVORITES", vi: "Yêu thích" },
 ];
+
+function findOfferById(id) {
+  return NEWS_OFFERS.find((o) => o.id === id) || null;
+}
+
+function formatOfferDate(from, to) {
+  const fmt = (iso) => {
+    const [y, m, d] = iso.split("-");
+    return `${d}/${m}/${y}`;
+  };
+  return `${fmt(from)} - ${fmt(to)}`;
+}
 
 function findMovieById(id) {
   return ALL_MOVIES.find((m) => m.id === id) || null;

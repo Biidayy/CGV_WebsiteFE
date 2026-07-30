@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tin Mới &amp; Ưu Đãi | CGV Cinemas</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-active="news">
+  <div class="page-wrap">
+    <div id="site-header-host"></div>
+
+    <nav class="breadcrumbs">
+      <a href="index.html">Trang Chủ</a><span>/</span>
+      Tin Mới &amp; Ưu Đãi
+    </nav>
+
+    <div class="category-head">
+      <h1>Tin Mới &amp; Ưu Đãi</h1>
+    </div>
+
+    <div class="movie-toolbar" id="offer-toolbar">
+      <div class="toolbar-row">
+        <label class="filter-search">
+          <span>Tìm ưu đãi</span>
+          <input type="search" id="offer-search" placeholder="Nhập tên chương trình..." autocomplete="off">
+        </label>
+        <label>
+          <span>Danh mục</span>
+          <select id="offer-category">
+            <option value="all">Tất cả</option>
+            <option value="Khuyến mãi">Khuyến mãi</option>
+            <option value="Thành viên">Thành viên</option>
+            <option value="Sự kiện">Sự kiện</option>
+            <option value="Dịch vụ">Dịch vụ</option>
+          </select>
+        </label>
+        <label>
+          <span>Sắp xếp</span>
+          <select id="offer-sort">
+            <option value="newest">Mới nhất</option>
+            <option value="oldest">Cũ nhất</option>
+            <option value="title">Tên A → Z</option>
+          </select>
+        </label>
+        <button type="button" class="btn-secondary" id="offer-reset">Xóa lọc</button>
+      </div>
+      <p class="filter-meta" id="offer-meta" hidden></p>
+    </div>
+
+    <div class="offer-grid" id="offer-grid"></div>
+    <p class="empty-note" id="offer-empty" hidden>Không tìm thấy ưu đãi phù hợp.</p>
+
+    <div id="site-footer-host"></div>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
