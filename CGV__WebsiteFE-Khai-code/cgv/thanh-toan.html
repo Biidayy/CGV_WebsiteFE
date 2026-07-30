@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán | CGV Cinemas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-active="rap">
+
+<div class="page-wrap">
+
+<div id="site-header-host"></div>
+
+<nav class="breadcrumbs">
+<a href="index.html">Trang Chủ</a>
+<span>/</span>
+
+<a href="tat-ca-cac-rap.html">Rạp CGV</a>
+<span>/</span>
+
+<a href="lich-chieu.html">Lịch chiếu</a>
+<span>/</span>
+
+<a href="chon-ghe.html">Chọn ghế</a>
+<span>/</span>
+
+Thanh toán
+</nav>
+
+<section class="section">
+
+<h1>Thanh toán</h1>
+
+<div class="payment-box">
+
+<h2>Thông tin đặt vé</h2>
+
+<table class="payment-table">
+
+<tr>
+<td>Phim</td>
+<td>Doraemon Movie 2026</td>
+</tr>
+
+<tr>
+<td>Rạp</td>
+<td>CGV Aeon Mall Bình Tân</td>
+</tr>
+
+<tr>
+<td>Suất chiếu</td>
+<td>20/07/2026 - 19:30</td>
+</tr>
+
+<tr>
+<td>Ghế</td>
+<td>A1, A2</td>
+</tr>
+
+<tr>
+<td>Tổng tiền</td>
+<td><strong>260.000 VNĐ</strong></td>
+</tr>
+
+</table>
+
+<h2>Phương thức thanh toán</h2>
+
+<select class="payment-select">
+
+<option>MoMo</option>
+
+<option>ZaloPay</option>
+
+<option>Visa</option>
+
+<option>MasterCard</option>
+
+<option>Tiền mặt tại quầy</option>
+
+</select>
+
+<br><br>
+
+<button class="btn-pay">
+
+Thanh toán ngay
+
+</button>
+
+</div>
+
+</section>
+
+<div id="site-footer-host"></div>
+
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+
+document.querySelector(".btn-pay").onclick=function(){
+
+alert("Thanh toán thành công!");
+
+window.location="index.html";
+
+}
+
+</script>
+
+</body>
+</html>

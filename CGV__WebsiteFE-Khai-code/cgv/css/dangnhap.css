@@ -1,0 +1,60 @@
+:root{
+  --cgv-red: #cf123a;
+  --cgv-red-dark: #b20d31;
+  --text-dark: #222222;
+  --muted: #6c6c6c;
+  --bg-page: #f6f6f6;
+  --card-surface: #ffffff;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background:var(--bg-page);
+  color:var(--text-dark);
+}
+
+/* Top banner and header are in auth-layout.css; only form-specific layout here */
+
+.login-section{background:linear-gradient(180deg,#fafafa, #f0f0f0)}
+
+.login-card{border-radius:14px;overflow:hidden}
+
+.login-card .card-body{padding:34px}
+
+.login-logo{width:82px;margin:0 auto 12px;display:block}
+
+h3.text-uppercase{letter-spacing:0.06em}
+
+.form-control{
+  min-height:52px;
+  border-radius:10px;
+  border:1px solid #e4e4e4;
+}
+
+.form-control:focus{box-shadow:0 0 0 0.15rem rgba(207,18,58,0.12);border-color:var(--cgv-red)}
+
+.form-check-input:checked{background-color:var(--cgv-red);border-color:var(--cgv-red)}
+
+.btn-primary{
+  background:var(--cgv-red);
+  border-color:var(--cgv-red);
+  border-radius:10px;
+  padding:12px 14px;
+  font-weight:600;
+}
+
+.btn-primary:hover,.btn-primary:focus{background:var(--cgv-red-dark);border-color:var(--cgv-red-dark)}
+
+.small.text-muted a, .text-center.small a{color:var(--cgv-red)}
+
+/* Footer spacing adjustments if needed */
+footer{margin-top:40px}
+
+/* Responsive tweaks to match Figma spacing */
+@media (max-width:576px){
+  .login-card .card-body{padding:20px}
+  .login-logo{width:72px}
+}

@@ -1,0 +1,27 @@
+:root{
+  --cgv-red: #cf123a;
+  --cgv-red-dark: #b20d31;
+  --bg-page: #f6f6f6;
+}
+
+.quay-online-section{
+  min-height: calc(100vh - 140px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 0;
+  background: linear-gradient(180deg,#fafafa,#f0f0f0);
+}
+
+.booth-card{border-radius:14px;overflow:hidden}
+.booth-card .card-body{padding:34px}
+.booth-card h2{color:var(--cgv-red);}
+.booth-card p{color:#555}
+
+.booth-card .btn-primary{background:var(--cgv-red);border-color:var(--cgv-red)}
+.booth-card .btn-primary:hover{background:var(--cgv-red-dark);border-color:var(--cgv-red-dark)}
+
+@media (max-width:576px){
+  .booth-card .card-body{padding:20px}
+  .login-logo{width:72px}
+}

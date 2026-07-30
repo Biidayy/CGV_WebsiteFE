@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phim đang chiếu | CGV Cinemas</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-active="phim" data-movies="now">
+  <div class="page-wrap">
+    <div id="site-header-host"></div>
+
+    <nav class="breadcrumbs">
+      <a href="index.html">Trang Chủ</a><span>/</span>
+      <a href="phim-dang-chieu.html">Phim</a><span>/</span>
+      Phim Đang Chiếu
+    </nav>
+
+    <div class="category-head">
+      <h1>Phim Đang Chiếu</h1>
+      <a class="tab-link" href="phim-sap-chieu.html">Phim Sắp Chiếu</a>
+    </div>
+
+    <div class="movie-toolbar" id="movie-toolbar">
+      <div class="toolbar-row">
+        <label class="filter-search">
+          <span>Tìm phim</span>
+          <input type="search" id="filter-search" placeholder="Nhập tên phim hoặc thể loại..." autocomplete="off">
+        </label>
+        <label>
+          <span>Thể loại</span>
+          <select id="filter-genre">
+            <option value="all">Tất cả</option>
+            <option value="Hoạt Hình">Hoạt hình</option>
+            <option value="Kinh Dị">Kinh dị</option>
+            <option value="Hành Động">Hành động</option>
+            <option value="Tâm Lý">Tâm lý</option>
+            <option value="Hài">Hài</option>
+            <option value="Gia đình">Gia đình</option>
+            <option value="Khoa Học">Khoa học viễn tưởng</option>
+          </select>
+        </label>
+        <label>
+          <span>Định dạng</span>
+          <select id="filter-format">
+            <option value="all">Tất cả</option>
+            <option value="IMAX">IMAX</option>
+            <option value="4DX">4DX</option>
+            <option value="ScreenX">ScreenX</option>
+            <option value="Starium">Starium</option>
+            <option value="ULTRA 4DX">ULTRA 4DX</option>
+          </select>
+        </label>
+        <label>
+          <span>Độ tuổi</span>
+          <select id="filter-rating">
+            <option value="all">Tất cả</option>
+            <option value="P">P</option>
+            <option value="K">K</option>
+            <option value="T13">T13</option>
+            <option value="T16">T16</option>
+            <option value="T18">T18</option>
+          </select>
+        </label>
+        <button type="button" class="btn-secondary" id="filter-reset">Xóa lọc</button>
+      </div>
+    </div>
+
+    <div class="movie-grid" id="movie-grid"></div>
+    <p class="empty-note" id="filter-empty" hidden>Không tìm thấy phim phù hợp.</p>
+    <div id="site-footer-host"></div>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

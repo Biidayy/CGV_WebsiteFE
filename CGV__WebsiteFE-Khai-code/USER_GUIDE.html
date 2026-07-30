@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Guide — CGV Cinemas Vietnam Frontend</title>
+  <style>
+    @page { size: A4; margin: 2cm; }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.45;
+      color: #111;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    h1 { font-size: 20pt; margin-bottom: 6px; color: #b11f2c; }
+    h2 {
+      font-size: 14pt;
+      margin-top: 28px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid #b11f2c;
+      color: #222;
+      page-break-after: avoid;
+    }
+    h3 { font-size: 12pt; margin-top: 16px; page-break-after: avoid; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+    th, td { border: 1px solid #ccc; padding: 6px 8px; vertical-align: top; }
+    th { background: #f5f5f5; text-align: left; }
+    code, a { word-break: break-all; }
+    .meta { background: #f7f7f7; padding: 12px 14px; border-left: 4px solid #b11f2c; margin: 16px 0; }
+    .shot {
+      margin: 14px 0 22px;
+      page-break-inside: avoid;
+    }
+    .shot img {
+      width: 100%;
+      max-width: 720px;
+      border: 1px solid #ddd;
+      display: block;
+    }
+    .shot figcaption {
+      font-size: 10pt;
+      color: #555;
+      margin-top: 6px;
+    }
+    ul.check { list-style: none; padding-left: 0; }
+    ul.check li:before { content: "☑ "; }
+    ol, ul { padding-left: 22px; }
+  </style>
+</head>
+<body>
+
+  <h1>User Guide</h1>
+  <p><strong>CGV Cinemas Vietnam — Frontend Website</strong></p>
+
+  <div class="meta">
+    <p><strong>Student:</strong> Huy &nbsp;|&nbsp; <strong>MSSV:</strong> 2374802010778</p>
+    <p><strong>GitHub repository:</strong><br>
+      <a href="https://github.com/Biidayy/CGV_WebsiteFE">https://github.com/Biidayy/CGV_WebsiteFE</a></p>
+    <p><strong>Published website:</strong><br>
+      <a href="https://biidayy.github.io/CGV_WebsiteFE/">https://biidayy.github.io/CGV_WebsiteFE/</a></p>
+  </div>
+
+  <h2>1. Introduction</h2>
+  <p>
+    This project is a front-end clone of the CGV Cinemas Vietnam website.
+    Users can browse movies and cinemas, open movie details with trailers,
+    save favorites, and complete a <em>mocked</em> ticket-booking flow
+    (seat selection) stored in the browser.
+  </p>
+  <p>
+    The site is built with HTML, CSS, and JavaScript only.
+    There is no real login, payment gateway, or backend API.
+  </p>
+
+  <h2>2. System Requirements</h2>
+  <table>
+    <tr><th>Item</th><th>Requirement</th></tr>
+    <tr><td>Device</td><td>Desktop, laptop, or mobile phone</td></tr>
+    <tr><td>Browser</td><td>Chrome, Edge, Firefox, or Safari (latest versions recommended)</td></tr>
+    <tr><td>JavaScript</td><td>Must be enabled</td></tr>
+    <tr><td>Network</td><td>Required for CDN images and the published GitHub Pages URL</td></tr>
+    <tr><td>Storage</td><td><code>localStorage</code> enabled (favorites &amp; tickets)</td></tr>
+  </table>
+  <p>No special software installation is needed to use the published website.</p>
+
+  <h2>3. How to Access the Website</h2>
+  <h3>3.1 Published site (recommended)</h3>
+  <ol>
+    <li>Open a web browser.</li>
+    <li>Go to: <a href="https://biidayy.github.io/CGV_WebsiteFE/">https://biidayy.github.io/CGV_WebsiteFE/</a></li>
+    <li>You will be redirected to the home page under <code>/cgv/</code>.</li>
+  </ol>
+  <p>Direct home URL:
+    <a href="https://biidayy.github.io/CGV_WebsiteFE/cgv/">https://biidayy.github.io/CGV_WebsiteFE/cgv/</a>
+  </p>
+
+  <h3>3.2 GitHub repository</h3>
+  <ol>
+    <li>Open <a href="https://github.com/Biidayy/CGV_WebsiteFE">https://github.com/Biidayy/CGV_WebsiteFE</a></li>
+    <li>Confirm the repository visibility is <strong>Public</strong>.</li>
+    <li>Browse source files in the <code>cgv/</code> folder.</li>
+  </ol>
+
+  <h3>3.3 Run locally</h3>
+  <ol>
+    <li>Clone or download the repository.</li>
+    <li>Serve the project folder with a static server, for example:</li>
+  </ol>
+  <pre><code>cd CGV_WebsiteFE
+python -m http.server 8765
+# then open http://127.0.0.1:8765/cgv/</code></pre>
+
+  <h2>4. Features Overview</h2>
+  <h3>Main pages</h3>
+  <ul>
+    <li><strong>Home</strong> — hero banner, movie carousel, events</li>
+    <li><strong>Now showing / Coming soon</strong> — lists with search &amp; filters</li>
+    <li><strong>Cinemas</strong> — all cinemas, special formats, 3D</li>
+    <li><strong>Movie detail</strong> — info, formats, trailer, booking link</li>
+    <li><strong>Book tickets (mock)</strong> — session &amp; seat selection</li>
+    <li><strong>My tickets / Favorites</strong> — saved tickets and liked movies</li>
+  </ul>
+  <h3>Extra features</h3>
+  <ul>
+    <li>Search/filter by title, genre, format, rating</li>
+    <li>Favorites via browser <code>localStorage</code></li>
+    <li>Mock seat booking + toast messages</li>
+    <li>Back-to-top button and responsive mobile menu</li>
+  </ul>
+
+  <h2>5. Step-by-Step Instructions</h2>
+  <h3>5.1 Browse movies on the home page</h3>
+  <ol>
+    <li>Open the published website.</li>
+    <li>View the hero slider and <strong>Movie Selection</strong> rail.</li>
+    <li>Click a movie poster or <em>Xem chi tiết</em> to open movie detail.</li>
+  </ol>
+
+  <h3>5.2 Search and filter movies</h3>
+  <ol>
+    <li>Open <strong>PHIM → Phim Đang Chiếu</strong> (or Phim Sắp Chiếu).</li>
+    <li>Type a title/genre in the search box.</li>
+    <li>Optionally choose Genre / Format / Rating filters.</li>
+    <li>Click <strong>Reset</strong> to clear filters.</li>
+  </ol>
+
+  <h3>5.3 View movie details and trailer</h3>
+  <ol>
+    <li>Open any movie detail page.</li>
+    <li>Review synopsis, runtime, rating, and formats.</li>
+    <li>Play the trailer when available.</li>
+    <li>Use the buy-ticket action to continue to booking.</li>
+  </ol>
+
+  <h3>5.4 Book a ticket (mock flow)</h3>
+  <ol>
+    <li>On the booking page, select available session options.</li>
+    <li>Choose one or more empty seats on the seat map.</li>
+    <li>Confirm booking — the ticket is stored locally (no real payment).</li>
+  </ol>
+
+  <h3>5.5 Manage favorites and tickets</h3>
+  <ol>
+    <li>Click the favorite (heart) control on a movie.</li>
+    <li>Open <strong>YÊU THÍCH</strong> or <strong>VÉ CỦA TÔI</strong> from the top menu.</li>
+    <li>Review saved items. Clearing browser data resets them.</li>
+  </ol>
+
+  <h3>5.6 Explore cinemas</h3>
+  <ol>
+    <li>Open <strong>RẠP CGV → Tất Cả Các Rạp</strong>.</li>
+    <li>Visit <strong>Rạp Đặc Biệt</strong> and <strong>Rạp 3D</strong> for format info.</li>
+  </ol>
+
+  <h2>6. Screenshots</h2>
+
+  <figure class="shot">
+    <img src="docs/screenshots/01-home.png" alt="Home page">
+    <figcaption>Figure 1. Home page — hero banner and movie selection</figcaption>
+  </figure>
+
+  <figure class="shot">
+    <img src="docs/screenshots/02-now-showing.png" alt="Now showing">
+    <figcaption>Figure 2. Now showing — movie list with search/filter controls</figcaption>
+  </figure>
+
+  <figure class="shot">
+    <img src="docs/screenshots/03-movie-detail.png" alt="Movie detail">
+    <figcaption>Figure 3. Movie detail page</figcaption>
+  </figure>
+
+  <figure class="shot">
+    <img src="docs/screenshots/04-booking.png" alt="Booking page">
+    <figcaption>Figure 4. Ticket booking / seat selection (mock)</figcaption>
+  </figure>
+
+  <figure class="shot">
+    <img src="docs/screenshots/05-my-tickets.png" alt="My tickets">
+    <figcaption>Figure 5. My tickets / Favorites page</figcaption>
+  </figure>
+
+  <h2>7. Known Limitations</h2>
+  <ul>
+    <li>Frontend-only mock: no real login, payment, or server API.</li>
+    <li>Tickets and favorites exist only in browser <code>localStorage</code>.</li>
+    <li>Some menu items (Cultureplex, member login, etc.) are placeholders.</li>
+    <li>Movie/cinema data is static demo data in <code>js/data.js</code>.</li>
+    <li>External image assets require an internet connection.</li>
+    <li>This is a coursework demo, not an official CGV product.</li>
+  </ul>
+
+  <h2>8. Submission Checklist</h2>
+  <ul class="check">
+    <li>The published website works correctly:
+      <a href="https://biidayy.github.io/CGV_WebsiteFE/">https://biidayy.github.io/CGV_WebsiteFE/</a></li>
+    <li>The GitHub repository is Public:
+      <a href="https://github.com/Biidayy/CGV_WebsiteFE">https://github.com/Biidayy/CGV_WebsiteFE</a></li>
+    <li>All main navigation links under <code>cgv/</code> are accessible</li>
+    <li>This PDF includes all required sections and is readable</li>
+    <li>Screenshots are included in Section 6</li>
+  </ul>
+
+  <h2>Quick links for markers</h2>
+  <table>
+    <tr><th>Item</th><th>URL</th></tr>
+    <tr><td>Published site</td><td><a href="https://biidayy.github.io/CGV_WebsiteFE/">https://biidayy.github.io/CGV_WebsiteFE/</a></td></tr>
+    <tr><td>Home (direct)</td><td><a href="https://biidayy.github.io/CGV_WebsiteFE/cgv/">https://biidayy.github.io/CGV_WebsiteFE/cgv/</a></td></tr>
+    <tr><td>Repository</td><td><a href="https://github.com/Biidayy/CGV_WebsiteFE">https://github.com/Biidayy/CGV_WebsiteFE</a></td></tr>
+  </table>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+/* Profile page styles aligned with site Bootstrap theme */
+:root{
+  --cgv-red: #cf123a;
+  --cgv-red-dark: #b20d31;
+  --text-dark: #222222;
+  --muted: #6c6c6c;
+}
+
+body{font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif}
+
+.profile-section{background:linear-gradient(180deg,#fafafa,#f0f0f0)}
+
+.profile-title{font-size:28px;color:var(--cgv-red);text-align:center;margin-bottom:28px}
+
+.profile-card{border-radius:14px;overflow:hidden}
+
+.profile-card .card-body{padding:34px}
+
+.avatar{width:110px;height:110px;object-fit:cover;border-radius:50%;margin:0 auto 12px}
+
+.member{color:var(--cgv-red);font-weight:700}
+
+.form-control{min-height:52px;border-radius:10px;border:1px solid #e4e4e4}
+.form-control:focus{box-shadow:0 0 0 0.15rem rgba(207,18,58,0.12);border-color:var(--cgv-red)}
+
+.form-select{min-height:52px;border-radius:10px;border:1px solid #e4e4e4}
+
+.btn-primary{background:var(--cgv-red);border-color:var(--cgv-red);border-radius:10px;padding:10px 16px;font-weight:600}
+.btn-primary:hover,.btn-primary:focus{background:var(--cgv-red-dark);border-color:var(--cgv-red-dark)}
+
+.btn-outline-secondary{border-radius:10px}
+
+@media (max-width:576px){
+  .profile-card .card-body{padding:20px}
+  .avatar{width:90px;height:90px}
+}

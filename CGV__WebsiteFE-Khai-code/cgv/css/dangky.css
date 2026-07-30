@@ -1,0 +1,64 @@
+/* ==========================
+   ĐĂNG KÝ
+========================== */
+
+.register-box{
+    width:470px;
+}
+
+.register-box h2{
+    color:#c8102e;
+    font-size:24px;
+    margin-bottom:25px;
+}
+
+.register-box input,
+.register-box select{
+    width:100%;
+    padding:12px;
+    margin-bottom:14px;
+    border:1px solid #d8d8d8;
+    border-radius:5px;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.register-box input:focus,
+.register-box select:focus{
+    outline:none;
+    border-color:#c8102e;
+}
+
+.register-box button{
+    width:100%;
+    padding:13px;
+    margin-top:10px;
+    background:#c8102e;
+    color:#fff;
+    border:none;
+    border-radius:5px;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.register-box button:hover{
+    background:#a60c26;
+}
+
+.register{
+    margin-top:18px;
+    text-align:center;
+    font-size:14px;
+    color:#666;
+}
+
+.register a{
+    color:#c8102e;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.register a:hover{
+    text-decoration:underline;
+}
