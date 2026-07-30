@@ -20,7 +20,7 @@ function renderHeader(active) {
       <a href="tin-moi-uu-dai.html">TIN MỚI & ƯU ĐÃI</a>
       <a href="ve-cua-toi.html">VÉ CỦA TÔI${ticketCount ? ` (${ticketCount})` : ""}</a>
       <a href="ve-cua-toi.html#favorites">YÊU THÍCH${favCount ? ` (${favCount})` : ""}</a>
-      <a href="#">ĐĂNG NHẬP/ ĐĂNG KÝ</a>
+      <a href="dangnhap.html">ĐĂNG NHẬP / ĐĂNG KÝ</a>
       <div class="lang-switch"><span class="active">VN</span><span>EN</span></div>
     </div>
   </div>
@@ -53,10 +53,10 @@ function renderHeader(active) {
         </li>
         <li><a href="#">CULTUREPLEX</a>
           <div class="dropdown">
-            <a href="#">Quầy Online</a>
-            <a href="#">Thuê Rạp & Vé Nhóm</a>
-            <a href="#">CGV eGift</a>
-            <a href="#">CGV Rules</a>
+            <a href="quayonline.html">Quầy Online</a>
+            <a href="thuerap&venhom.html">Thuê Rạp & Vé Nhóm</a>
+            <a href="cgveGift.html">CGV eGift</a>
+            <a href="cgvrules.html">CGV Rules</a>
           </div>
         </li>
       </ul>
